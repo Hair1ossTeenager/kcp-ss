@@ -13,11 +13,15 @@ def start_ss_server(mode, password):
     print(cmd)
     os.system(cmd)
 
-def start_server(mode='rc4-md5', password='123466'):
+def start_server(mode, password):
     start_kcp_server()
     start_ss_server(mode, password)
 
 if __name__=='__main__':
-    mode = sys.argv[1]
-    password = sys.argv[2]
+    mode = 'rc4-md5'
+    password = '123466'
+    argv = sys.argv[1:]
+    if len(argv) == 2:
+        mode = argv[0]
+        password = argv[1]
     start_server(mode, password)
